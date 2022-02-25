@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <%- include('../partials/head.ejs'); %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/navbar'); %>
+    </header>
+    <main class="p-4 card m-2" >
+        <h1>Users</h1>
+        <section style="display: flex; gap: 2%; flex-wrap: wrap;">
+            <% users.forEach( user => { %>
+                <div class="card mb-2" style="width: 98%; max-width: 250px;">
+                    <img class="card-img-top" style="width:100%; height: 50%;" src="<%= user.avatar || 'https://www.kindpng.com/picc/m/451-4517876_default-profile-hd-png-download.png' %>" alt="profile">
+                    <div class="card-body">
+                        <h5 class="card-title">Username: <%= user.username %></h5>        
+                        <p class="card-text">Email: <%= user.email %></p>
+                        <a href="/user/<%= user._id %>/tweets" class="btn btn-primary">See User Tweets</a>
+                    </div>
+                </div>            
+            <% }); %> 
+        </section>
+    </main>
+        
+</body>
+</html>

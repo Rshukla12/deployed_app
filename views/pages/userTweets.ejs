@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TweetHome</title>
+    <%- include('../partials/head.ejs'); %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/navbar'); %>
+    </header>
+
+    <main class="p-4 card m-2">
+        <h1><%= noOfTweets %> Tweets by - <%= user.username %></h1>
+        <section style="display: flex; gap: 2%; flex-wrap: wrap;">
+            <% tweets?.forEach( tweet => { %>
+                <div class="card mb-2" style="width: 98%; max-width: 250px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= tweet.title %></h5>        
+                        <p class="card-text"><%= tweet.body %></p>
+                        <% if ( tweet.tags && tweet.tags.length > 0 ){ %>
+                            <div>
+                                <% tweet.tags?.forEach( tag => { %>
+                                    <span class="badge bg-secondary"><%= tag %></span>
+                                <% }); %>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>            
+            <% }); %> 
+        </section>
+    </main>
+    
+</body>
+</html>
